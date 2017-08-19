@@ -88,6 +88,10 @@ test_that("clr_array is correct and reverses with clrInv_array", {
   expect_equivalent(a, a.after.inverse)
 })
 
+test_that("miniclo_array gives correct results", {
+  expect_equal(miniclo_array(5*a, samples=1, parts=2), a)
+})
+
 
 
 

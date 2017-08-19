@@ -7,6 +7,7 @@
 \alias{create_alr_base}
 \alias{alr}
 \alias{alrInv}
+\alias{create_default_ilr_base}
 \alias{ilr}
 \alias{ilrInv}
 \alias{create_clr_base}
@@ -23,6 +24,8 @@ create_alr_base(D, d, inv = FALSE)
 alr(x, d = NULL)
 
 alrInv(y, d = NULL)
+
+create_default_ilr_base(D)
 
 ilr(x, V = NULL)
 
@@ -63,6 +66,7 @@ all the standard log-ratio transforms can be written in the following form
 \deqn{x=\mathcal{C}[exp(yV^t)]} where \eqn{\mathcal{C}[\cdot]} is the closure operator (\code{\link{miniclo}}). Note however that if \eqn{V} does not represent an orthonormal
 basis in the Aitchison geometry then the \eqn{V} used for the log-ratio transform may be different
 than the one used for the reverse transform (this is the case for the ALR and CLR transforms).
+Default ILR base formed by Gram-Schmidt orthogonalization of an ALR basis.
 }
 \examples{
 #ALR Transform

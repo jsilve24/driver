@@ -6,15 +6,13 @@
 #' @param V ILR contrast matrix (i.e., transformation matrix of ILR)
 #'
 #' @return matrix
-#' @export
-#' @rdname convert_coda_covariance
+#' @name convert_coda_covariance
 #' @examples
 #' x <- matrix(runif(30),  10, 3)
 #' x <- miniclo(x)
 #' x.ilr <- ilr(x)
-#' V <- qr.Q(qr(create_alr_base(ncol(x), ncol(x))
+#' V <- create_default_ilr_base(3)
 #' Sigma <- cov(x.ilr)
-#'
 #' Sigma.clr <- ilrvar2clrvar(Sigma, V)
 #' clrvar2ilrvar(Sigma.clr, V)
 #' clrvar2varmat(Sigma.clr)

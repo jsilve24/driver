@@ -6,12 +6,12 @@
 #' @param samples index of dimension of \code{x} that represents samples
 #' @param parts index of dimension of \code{x} that represents parts (e.g., compositional variables)
 #'
-#' @return
+#' @return array
 #' @export
 #'
 #' @examples
 #' a <- array(1:100, dim=c(10, 5, 2))
-#' miniclo_aray(a)
+#' miniclo_array(a)
 miniclo_array <- function(a, samples=1, parts=2){
   dims <- dim(a)
   split.margin <- (1:length(dims))[!(1:length(dims) %in% c(samples, parts))]
@@ -32,12 +32,11 @@ miniclo_array <- function(a, samples=1, parts=2){
 #' @param coords index of dimension of \code{x} that represents coords (e.g., transformed variables)
 #'
 #' @return array
-#' @export
-#' @rdname array_lr_transforms
+#' @name array_lr_transforms
 #'
 #' @examples
 #' a <- array(1:100, dim=c(10, 5, 2))
-#' a <- miniclo_aray(a)
+#' a <- miniclo_array(a)
 #' alr_array(a, 2)
 #' ilr_array(a)
 #' clrInv_array(clr_array(a))

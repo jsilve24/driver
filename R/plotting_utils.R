@@ -1,4 +1,6 @@
-#' Vector to lower diagonal of matrix formed by unique(vetor) %times% unique(vector)
+#' Vector to lower diagonal of matrix formed from factor by factor
+#'
+#' Formed by unique(vetor) %times% unique(vector)
 #'
 #' Useful for creating heatmaps using only lower diagonal.
 #'

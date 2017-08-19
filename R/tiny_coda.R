@@ -52,6 +52,7 @@ vec_to_mat <- function(x){
 #' \deqn{x=\mathcal{C}[exp(yV^t)]} where \eqn{\mathcal{C}[\cdot]} is the closure operator (\code{\link{miniclo}}). Note however that if \eqn{V} does not represent an orthonormal
 #' basis in the Aitchison geometry then the \eqn{V} used for the log-ratio transform may be different
 #' than the one used for the reverse transform (this is the case for the ALR and CLR transforms).
+#' Default ILR base formed by Gram-Schmidt orthogonalization of an ALR basis.
 #' @name base_lr_transforms
 #' @examples
 #' #ALR Transform
@@ -121,9 +122,15 @@ alrInv <- function(y, d=NULL){
 
 #' @rdname base_lr_transforms
 #' @export
+create_default_ilr_base <- function(D){
+  qr.Q(qr(create_alr_base(D, D)))
+}
+
+#' @rdname base_lr_transforms
+#' @export
 ilr <- function(x, V=NULL){
   x <- vec_to_mat(x)
-  if (is.null(V)) V <- qr.Q(qr(create_alr_base(ncol(x), ncol(x))))
+  if (is.null(V)) V <- create_default_ilr_base(ncol(x))
   glr(x, V)
 }
 
@@ -131,7 +138,7 @@ ilr <- function(x, V=NULL){
 #' @export
 ilrInv <- function(y, V=NULL){
   y <- vec_to_mat(y)
-  if (is.null(V)) V <- qr.Q(qr(create_alr_base(ncol(y)+1, ncol(y)+1)))
+  if (is.null(V)) V <- create_default_ilr_base(ncol(y)+1)
   glrInv(y, V)
 }
 

@@ -14,7 +14,7 @@ Description: Personal Utility Functions from Justin Silvemran.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Suggests: testthat, abind, philr
+Suggests: testthat, abind, philr, knitr
 Imports: dplyr, tidyr, purrr, rlang
 VignetteBuilder: knitr
 URL: https://github.com/jsilve24/driver 

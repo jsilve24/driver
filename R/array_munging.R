@@ -110,3 +110,35 @@ spread_array <- function(data, value, ...){
 
   return(a)
 }
+
+
+#' Test for any/all non-NA along margin
+#'
+#' \code{complete_cases_array} is generalization of \code{complete_cases}
+#' to arrays. \code{any_cases_array} tests for any non-NA rather than all
+#' non-NA along margin.
+#'
+#' @param a multidimensional array
+#' @param margin margins to test along
+#'
+#' @return matrix
+#' @export
+#' @rdname complete_cases_array
+#' @examples
+#' a <- array(0, dim =c(3,4,2))
+#' a[2,2,] <- NA
+#' any_cases_array(a, margin=1)
+#' any_cases_array(a, margin=c(1,2))
+#' all_cases_array(a, margin=1)
+#' all_cases_array(a, margin=c(1,2))
+any_cases_array <- function(a, margin=1){
+  return(apply(a, margin, function(x) any(!is.na(x))))
+}
+
+#' @rdname complete_cases_array
+#' @export
+all_cases_array <- function(a, margin=1){
+  return(apply(a, margin, function(x) all(!is.na(x))))
+}
+
+

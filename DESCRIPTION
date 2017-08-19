@@ -1,14 +1,22 @@
 Package: driver
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Utility Functions from Justin Silverman
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: c(person("Justin", "Silverman", role=c("aut", "cre"),
+                     email = "jsilve24@gmail.com"))
+Author: Justin Silverman
+Maintainer: Justin Silverman <jsilve24@gmail.com>
+Description: Personal Utility Functions from Justin Silvemran. 
+  Includes minimal implementation of log-ratio transforms, log-ratio 
+  transforms implemented on multidimensional arrays, array munging functions
+  for moving quickly back and forth between tidy and multidimensional array
+  forms of data, and functions for summarizing posterior samples of variables. 
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Suggests: testthat
+Suggests: testthat, abind, philr
 Imports: dplyr, tidyr, purrr, rlang
+VignetteBuilder: knitr
+URL: https://github.com/jsilve24/driver 
+BugReports: https://github.com/jsilve24/driver/issues
 RoxygenNote: 6.0.1

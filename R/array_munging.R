@@ -8,7 +8,7 @@
 #' @return data.frame
 #' @seealso spread_array
 #' @export
-#' @import dplyr, purrr, tidyr
+#' @import dplyr purrr tidyr
 #' @importFrom rlang quos enquo quo_name sym syms
 #'
 #' @examples
@@ -53,7 +53,7 @@ gather_array <- function(a, value, ..., .id=NULL){
 #' @return multidimensional array
 #' @seealso gather_array
 #' @export
-#' @import dplyr, purrr, tidyr
+#' @import dplyr purrr tidyr
 #' @importFrom rlang quos enquo quo_name sym syms
 #'
 #' @examples

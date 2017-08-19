@@ -22,7 +22,7 @@ data.frame
 Gather Multidimensional Array to Tidy Tibble
 }
 \examples{
-a <- array(1:100, dim=c(10, 5, 2))
+a <- array(1:100, dim =c(10, 5, 2))
 gather_array(a, sequence, A, B, C)
 }
 \seealso{

@@ -7,7 +7,7 @@
 #'
 #' @examples
 #' mode(c(2,3,34,2,2))
-mode <- function(x) {
+Mode <- function(x) {
   ux <- unique(x)
   tab <- tabulate(match(x, ux))
   ux[which( tab == max(tab) )]

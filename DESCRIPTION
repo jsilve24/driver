@@ -15,7 +15,7 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: testthat, abind, philr, knitr
-Imports: dplyr, tidyr, purrr, rlang
+Imports: dplyr, tidyr, purrr, rlang, plyr
 VignetteBuilder: knitr
 URL: https://github.com/jsilve24/driver 
 BugReports: https://github.com/jsilve24/driver/issues

@@ -33,6 +33,7 @@ miniclo_array <- function(a, samples=1, parts=2){
 #'
 #' @return array
 #' @name array_lr_transforms
+#' @importFrom plyr aaply
 #'
 #' @examples
 #' a <- array(1:100, dim=c(10, 5, 2))
@@ -47,11 +48,10 @@ NULL
 glr_array <- function(x, V, samples = 1, parts = 2){
   dims <- dim(x)
   split.margin <- (1:length(dims))[!(1:length(dims) %in% c(samples, parts))]
-  dims.new <- dims
-  dims.new[parts] <- ncol(V)
 
-  x.out <- array(NA, dim=dims.new)
-  x.out[] <- apply(x, MARGIN = c(split.margin), FUN = glr, V)
+  x.out <- plyr::aaply(x, split.margin, glr, V, .drop=FALSE)
+  x.out <- aperm(x.out, match(1:length(dims), c(split.margin, samples, parts)))
+  dimnames(x.out)[-c(parts)] <- dimnames(x)[-c(parts)]
   if (!is.null(dimnames(V)))dimnames(x.out)[[parts]] <- colnames(V)   # Name output
   x.out
 }
@@ -61,11 +61,10 @@ glr_array <- function(x, V, samples = 1, parts = 2){
 glrInv_array <- function(y, V, samples = 1, coords = 2){
   dims <- dim(y)
   split.margin <- (1:length(dims))[!(1:length(dims) %in% c(samples, coords))]
-  dims.new <- dims
-  dims.new[coords] <- nrow(V)
 
-  y.out <- array(NA, dim = dims.new)
-  y.out[] <- apply(y, MARGIN = c(split.margin), FUN = glrInv, V)
+  y.out <- plyr::aaply(y, split.margin, glrInv, V, .drop=FALSE)
+  y.out <- aperm(y.out, match(1:length(dims), c(split.margin, samples, coords)))
+  dimnames(y.out)[-c(coords)] <- dimnames(y)[-c(coords)]
   if (!is.null(dimnames(V)))dimnames(y.out)[[coords]] <- rownames(V)   # Name output
   y.out
 }

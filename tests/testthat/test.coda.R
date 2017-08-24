@@ -44,6 +44,7 @@ test_that("ilr and ilrInv referse each-other",{
 
 a <- abind(x, x, along = 3)
 a.perm <- aperm(a, c(1,3,2))
+a.perm.2 <- aperm(a, c(3,1,2))
 
 test_that("alr_array is correct", {
   a.alr <- alr_array(a, 2)
@@ -51,7 +52,10 @@ test_that("alr_array is correct", {
   expect_equivalent(a.alr, abind(a1.alr, a1.alr, along=3))
 
   a.perm.alr <- alr_array(a.perm, 2, 1, 3)
-  expect_equivalent(a.alr, a.perm.alr)
+  expect_equivalent(a.alr[1,,], t(a.perm.alr[1,,]))
+
+  a.perm.2.alr <- alr_array(a.perm.2, 2, 2, 3)
+  expect_equal(a.perm.2.alr[1,,], a.alr[,,1])
 })
 
 test_that("alrInv_array reverses alr_array", {

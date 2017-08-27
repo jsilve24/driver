@@ -14,7 +14,7 @@
 #' # d <- data.frame("a" = c(1:10), "b"=rep(c(1,2), 5)) %>%
 #' #   summarise_posterior(a, mean.b = mean(b))
 summarise_posterior <- function(data, var, ...){
-  qvar <- quo(var)
+  qvar <- enquo(var)
   qs <- quos(...)
 
 

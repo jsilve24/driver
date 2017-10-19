@@ -8,3 +8,12 @@ test_that("summarise_posterior is correct", {
     summarise_posterior(var)
   expect_equivalent(d, d2)
 })
+
+test_that("summarise_posterior is correct with grouping", {
+  d <- data.frame("a" = c(1:10), "b"=rep(c(1,2), 5)) %>%
+       group_by(b) %>%
+       summarise_posterior(a) %>%
+       ungroup()
+  expect_equivalent(d$mean, c(5, 6))
+})
+

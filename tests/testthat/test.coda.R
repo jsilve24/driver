@@ -40,64 +40,6 @@ test_that("ilr and ilrInv referse each-other",{
 })
 
 
-# test coda array ---------------------------------------------------------
-
-a <- abind(x, x, along = 3)
-a.perm <- aperm(a, c(1,3,2))
-a.perm.2 <- aperm(a, c(3,1,2))
-
-test_that("alr_array is correct", {
-  a.alr <- alr_array(a, 2)
-  a1.alr <- alr(a[,,1], 2)
-  expect_equivalent(a.alr, abind(a1.alr, a1.alr, along=3))
-
-  a.perm.alr <- alr_array(a.perm, 2, 1, 3)
-  expect_equivalent(a.alr[1,,], t(a.perm.alr[1,,]))
-
-  a.perm.2.alr <- alr_array(a.perm.2, 2, 2, 3)
-  expect_equal(a.perm.2.alr[1,,], a.alr[,,1])
-})
-
-test_that("alrInv_array reverses alr_array", {
-  a.alr <- alr_array(a, 2)
-  expect_equivalent(alrInv_array(a.alr, 2), a)
-})
-
-test_that("ilr_array is correct and reverses with ilrInv_array", {
-  V <- philr::buildilrBasep(philr::phylo2sbp(philr::named_rtree(3)), c(1,1,1))
-
-  a.ilr <- ilr_array(a, V)
-  a1.ilr <- ilr(a[,,1], V)
-  expect_equivalent(a.ilr, abind(a1.ilr, a1.ilr, along=3))
-
-  colnames(V) <- c("n1", "n2")
-  rownames(V) <- c("t1", "t2", "t3")
-
-  a.ilr <- ilr_array(a, V)
-  a.after.inverse <- ilrInv_array(a.ilr, V)
-
-  expect_equal(dimnames(a.ilr)[[2]], c("n1", "n2"))
-  expect_equal(dimnames(a.after.inverse)[[2]], c("t1", "t2", "t3"))
-  expect_equal(unname(a), unname(a.after.inverse))
-})
-
-test_that("clr_array is correct and reverses with clrInv_array", {
-  a.clr <- clr_array(a)
-  a1.clr <- clr(a[,,1])
-  expect_equivalent(a.clr, abind(a1.clr, a1.clr, along=3))
-
-  a.clr <- clr_array(a)
-  a.after.inverse <- clrInv_array(a.clr)
-
-  expect_equivalent(a, a.after.inverse)
-})
-
-test_that("miniclo_array gives correct results", {
-  expect_equal(miniclo_array(5*a, samples=1, parts=2), a)
-})
-
-
-
 
 
 

@@ -25,7 +25,11 @@ miniclo <- function(x){
 #' vec_to_mat(c(1,2,3))
 #' vec_to_mat(rbind(c(1,2,3), c(1,2,3)))
 vec_to_mat <- function(x){
-  if (is.vector(x)) return(matrix(x, nrow = 1))
+  if (is.vector(x)) {
+    n <- names(x)
+    x <- matrix(x, nrow = 1)
+    colnames(x) <- n
+  }
   x
 }
 

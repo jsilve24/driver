@@ -10,7 +10,11 @@
 #' x <- matrix(runif(30), 10, 3)
 #' x <- miniclo(x)
 miniclo <- function(x){
-  if (is.vector(x)) x <- matrix(x, nrow = 1)
+  if (is.vector(x)) {
+    n <- names(x)
+    x <- matrix(x, nrow = 1)
+    colnames(x) <- n
+  }
   (x/rowSums(x))
 }
 

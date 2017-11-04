@@ -11,6 +11,17 @@ test_that("miniclo sums to 1", {
   expect_equal(rowSums(x), rep(1, nrow(x)))
 })
 
+test_that("miniclo respects matrix names", {
+  v <- matrix(c(7, 3, 18), nrow=1)
+  colnames(v) <- c("a", "b", "c")
+  expect_equal(colnames(v), colnames(miniclo(v)))
+})
+
+test_that("miniclo respects vector names", {
+  v <- c("a" = 7, "b" = 3, "c" = 18)
+  expect_equal(names(v), colnames(miniclo(v)))
+})
+
 test_that("alr correct", {
   a <- alr(c(1,2,3), 3)
   expect_equal(a, matrix(c(-1.0986123, -0.4054651), 1,2),

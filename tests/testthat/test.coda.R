@@ -1,7 +1,6 @@
 library(abind)
-context("CoDA Functions")
+context("Simple CoDA Functions")
 
-# test coda basic ---------------------------------------------------------
 # Changed tolerance on values that I copied from terminal
 
 x <- matrix(runif(300), 100, 3)

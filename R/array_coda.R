@@ -1,0 +1,162 @@
+
+# Main Helper Function ----------------------------------------------------
+
+#' Apply Function to 1 dimension of array along all others
+#'
+#' Used by a number of functions in the array_coda group.
+#'
+#' @param a input array
+#' @param dim dimension (as integer) along which to apply matrix operation
+#' @param f function to apply to matrix that returns a matrix
+#' @param dimname (optional) charachter vector for dimension output from matrix operation
+#'
+#' @details If the matrix operation does not change the dimension of the array
+#' and dimnames is null, uses existing dimnames.
+#'
+#' @return array
+#' @export
+#'
+#' @importFrom rlang sym syms
+#'
+#' @examples
+#' a <- array(runif(600), dim = c(100, 3, 2))
+#' apply_array_mat(a, 2, miniclo)
+array_apply_1D_function <- function(a, dim, f, dimname=NULL){
+
+  d <- dim(a)
+  ndim <- length(d)
+  sdim <- sym(paste0("dim_", dim))
+  sdim_other <- syms(paste0("dim_", (1:ndim)[(1:ndim) != dim]))
+
+  # Store Dimnames
+  dn <- dimnames(a)
+
+  # Acctual Computation
+  ga <- a %>%
+    gather_array(var) %>%
+    spread(!!sdim, var)
+
+  indicies <- ga %>%
+     select(!!!sdim_other)
+
+  b <- ga %>%
+    select(-contains("dim")) %>%
+    as.matrix() %>%
+    f %>%
+    `colnames<-`(., 1:ncol(.)) %>%
+    as.data.frame() %>%
+    bind_cols(indicies, .) %>%
+    gather(!!sdim, var, -contains("dim")) %>%
+    mutate(!!quo_name(sdim)  := as.integer(!!sdim)) %>%
+    spread_array(var, !!!syms(paste0("dim_", 1:ndim)))
+
+  # Update Dimnames
+  if (!is.null(dn)){
+    if(dim(b)[dim] == d[dim] & is.null(dimname)) dimname <- dn[[dim]]
+    dn[[dim]] <- dimname
+    dimnames(b) <- dn
+  } else {
+    names(dim(b)) <- NULL
+  }
+
+  return(b)
+}
+
+
+# Coda Array Functions ----------------------------------------------------
+
+
+#' Closure Operation applied to array on margin
+#'
+#' Array version of \code{\link{miniclo}}.
+#'
+#' @param x multidimensional array
+#' @param parts index of dimension of \code{x} that represents parts (e.g., compositional variables)
+#'
+#' @return array
+#' @export
+#'
+#' @examples
+#' x <- array(1:100, dim=c(10, 5, 2))
+#' miniclo_array(x)
+miniclo_array <- function(x, parts){
+  array_apply_1D_function(x, parts, miniclo)
+}
+
+
+#' Log-Ratios Transforms for Arrays
+#'
+#' Extension of \code{\link{base_lr_transforms}} to arrays over arbitrary
+#' margins.
+#'
+#' @inheritParams base_lr_transforms
+#' @param x multidimensional array in simplex
+#' @param y multidimensional array in transformed space
+#' @param parts index of dimension of \code{x} that represents parts (e.g., compositional variables)
+#' @param coords index of dimension of \code{x} that represents coords (e.g., transformed variables)
+#'
+#' @return array
+#' @name array_lr_transforms
+#'
+#' @examples
+#' a <- array(1:100, dim=c(10, 5, 2))
+#' a <- miniclo_array(a)
+NULL
+
+
+#' @rdname array_lr_transforms
+glr_array <- function(x, V, parts, dimname = colnames(V)){
+  f <- function(x) glr(x, V)
+  array_apply_1D_function(x, parts, f, dimname)
+}
+
+#' @rdname array_lr_transforms
+glrInv_array <- function(y, V, coords, dimname = colnames(V)){
+  f <- function(y) glrInv(y, V)
+  array_apply_1D_function(y, coords, f, dimname)
+}
+
+#' @rdname array_lr_transforms
+alr_array <- function(x, d=dim(x)[parts], parts){
+  B <- create_alr_base(dim(x)[parts], d, inv=FALSE)
+  glr_array(x, B, parts)
+}
+
+#' @rdname array_lr_transforms
+alrInv_array <- function(y, d=dim(y)[coords]+1, coords){
+  B <- create_alr_base(dim(y)[coords]+1, d, inv=TRUE)
+  glrInv_array(y, B, coords)
+}
+
+#' @rdname array_lr_transforms
+ilr_array <- function(x, V=NULL, parts){
+  n.parts <- dim(x)[parts]
+  if (is.null(V)) V <- qr.Q(qr(create_alr_base(n.parts, n.parts)))
+  glr_array(x, V, parts)
+}
+
+#' @rdname array_lr_transforms
+ilrInv_array <- function(y, V=NULL, coords){
+  n.coords <- dim(y)[coords]
+  if (is.null(V)) V <- qr.Q(qr(create_alr_base(n.coords+1, n.coords+1)))
+  glrInv_array(y, V, coords)
+}
+
+#' @rdname array_lr_transforms
+clr_array <- function(x, parts){
+  n.parts <- dim(x)[parts]
+  V <- create_clr_base(n.parts)
+  glr_array(x, V, parts)
+}
+
+#' @rdname array_lr_transforms
+clrInv_array <- function(y, coords){
+  n.coords <- dim(y)[coords]
+  V <- diag(n.coords) # Not efficient but reuses code...
+  glrInv_array(y, V, coords)
+}
+
+
+
+
+

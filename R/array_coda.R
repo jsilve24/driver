@@ -16,11 +16,11 @@
 #' @return array
 #' @export
 #'
-#' @importFrom rlang sym syms
+#' @importFrom rlang sym syms new_definition
 #'
 #' @examples
 #' a <- array(runif(600), dim = c(100, 3, 2))
-#' apply_array_mat(a, 2, miniclo)
+#' array_apply_1D_function(a, 2, miniclo)
 array_apply_1D_function <- function(a, dim, f, dimname=NULL){
 
   d <- dim(a)
@@ -48,12 +48,15 @@ array_apply_1D_function <- function(a, dim, f, dimname=NULL){
     bind_cols(indicies, .) %>%
     gather(!!sdim, var, -contains("dim")) %>%
     mutate(!!quo_name(sdim)  := as.integer(!!sdim)) %>%
+    #mutate(new_definition(quo_name(sdim), as.integer(!!sdim))) %>%
     spread_array(var, !!!syms(paste0("dim_", 1:ndim)))
 
   # Update Dimnames
   if (!is.null(dn)){
-    if(dim(b)[dim] == d[dim] & is.null(dimname)) dimname <- dn[[dim]]
-    dn[[dim]] <- dimname
+    if(dim(b)[dim] == d[dim] & is.null(dimname) & !is.null(dn[[dim]])) {
+      dimname <- dn[[dim]]
+      dn[[dim]] <- dimname
+    }
     dimnames(b) <- dn
   } else {
     names(dim(b)) <- NULL
@@ -78,7 +81,7 @@ array_apply_1D_function <- function(a, dim, f, dimname=NULL){
 #'
 #' @examples
 #' x <- array(1:100, dim=c(10, 5, 2))
-#' miniclo_array(x)
+#' miniclo_array(x, parts=2)
 miniclo_array <- function(x, parts){
   array_apply_1D_function(x, parts, miniclo)
 }
@@ -94,41 +97,48 @@ miniclo_array <- function(x, parts){
 #' @param y multidimensional array in transformed space
 #' @param parts index of dimension of \code{x} that represents parts (e.g., compositional variables)
 #' @param coords index of dimension of \code{x} that represents coords (e.g., transformed variables)
+#' @param dimname character vector of dimension name for resulting dimension after transformation
 #'
 #' @return array
 #' @name array_lr_transforms
 #'
 #' @examples
 #' a <- array(1:100, dim=c(10, 5, 2))
-#' a <- miniclo_array(a)
+#' a <- miniclo_array(a, parts=2)
+#' clr_array(a, parts=2)
 NULL
 
 
 #' @rdname array_lr_transforms
+#' @export
 glr_array <- function(x, V, parts, dimname = colnames(V)){
   f <- function(x) glr(x, V)
   array_apply_1D_function(x, parts, f, dimname)
 }
 
 #' @rdname array_lr_transforms
+#' @export
 glrInv_array <- function(y, V, coords, dimname = colnames(V)){
   f <- function(y) glrInv(y, V)
   array_apply_1D_function(y, coords, f, dimname)
 }
 
 #' @rdname array_lr_transforms
+#' @export
 alr_array <- function(x, d=dim(x)[parts], parts){
   B <- create_alr_base(dim(x)[parts], d, inv=FALSE)
   glr_array(x, B, parts)
 }
 
 #' @rdname array_lr_transforms
+#' @export
 alrInv_array <- function(y, d=dim(y)[coords]+1, coords){
   B <- create_alr_base(dim(y)[coords]+1, d, inv=TRUE)
   glrInv_array(y, B, coords)
 }
 
 #' @rdname array_lr_transforms
+#' @export
 ilr_array <- function(x, V=NULL, parts){
   n.parts <- dim(x)[parts]
   if (is.null(V)) V <- qr.Q(qr(create_alr_base(n.parts, n.parts)))
@@ -136,6 +146,7 @@ ilr_array <- function(x, V=NULL, parts){
 }
 
 #' @rdname array_lr_transforms
+#' @export
 ilrInv_array <- function(y, V=NULL, coords){
   n.coords <- dim(y)[coords]
   if (is.null(V)) V <- qr.Q(qr(create_alr_base(n.coords+1, n.coords+1)))
@@ -143,6 +154,7 @@ ilrInv_array <- function(y, V=NULL, coords){
 }
 
 #' @rdname array_lr_transforms
+#' @export
 clr_array <- function(x, parts){
   n.parts <- dim(x)[parts]
   V <- create_clr_base(n.parts)
@@ -150,6 +162,7 @@ clr_array <- function(x, parts){
 }
 
 #' @rdname array_lr_transforms
+#' @export
 clrInv_array <- function(y, coords){
   n.coords <- dim(y)[coords]
   V <- diag(n.coords) # Not efficient but reuses code...

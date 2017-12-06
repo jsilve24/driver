@@ -142,3 +142,22 @@ all_cases_array <- function(a, margin=1){
 }
 
 
+
+#' Split Multidimeninal array to a list along a specified dimension
+#'
+#' @param a array
+#' @param n dimention of array to split
+#'
+#' @return List of array of 1 less dimension than a
+#' @export
+#' @references https://stackoverflow.com/questions/20198751/three-dimensional-array-to-list
+#' @examples
+#' a <- array(0, dim=4:6)
+#' split.along.dim(a, 3)
+split.along.dim <- function(a, n){
+  setNames(lapply(split(a, arrayInd(seq_along(a), dim(a))[, n]),
+                  array, dim = dim(a)[-n], dimnames(a)[-n]),
+           dimnames(a)[[n]])
+}
+
+

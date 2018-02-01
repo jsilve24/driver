@@ -187,3 +187,26 @@ test_that("ilr_array and ilrInv_array correctness", {
 })
 
 
+test_that("ilr_array handles names correctly", {
+  d <- dim(a)
+
+  # Create Compositions from a
+  a1 <- array(0, dim=d)
+  for (i in 1:d[2]){
+    for (j in 1:d[3]){
+      a1[,i,j] <- miniclo(a[,i,j])
+    }
+  }
+  dimnames(a1) <- list(NULL, c("a", "b", "c"), NULL)
+
+  V <- create_default_ilr_base(d[1])
+  colnames(V) <- paste0("c", 1:ncol(V))
+  rownames(V) <- paste0("r", 1:nrow(V))
+
+  a1_ilr <- ilr_array(a1, V, 1)
+  expect_equal(dimnames(a1_ilr)[[1]], colnames(V))
+  expect_equal(dimnames(ilrInv_array(a1_ilr, V, 1))[[1]], rownames(V))
+  expect_equal(dimnames(a1_ilr)[[2]], c("a", "b", "c"))
+  expect_equal(dimnames(ilrInv_array(a1_ilr, V, 1))[[2]], c("a", "b", "c"))
+
+})

@@ -21,12 +21,12 @@
 #' @examples
 #' a <- array(runif(600), dim = c(100, 3, 2))
 #' array_apply_1D_function(a, 2, miniclo)
-array_apply_1D_function <- function(a, dim, f, dimname=NULL){
+array_apply_1D_function <- function(a, dimno, f, dimname=NULL){
 
   d <- dim(a)
   ndim <- length(d)
-  sdim <- sym(paste0("dim_", dim))
-  sdim_other <- syms(paste0("dim_", (1:ndim)[(1:ndim) != dim]))
+  sdim <- sym(paste0("dim_", dimno))
+  sdim_other <- syms(paste0("dim_", (1:ndim)[(1:ndim) != dimno]))
 
   # Store Dimnames
   dn <- dimnames(a)
@@ -52,16 +52,20 @@ array_apply_1D_function <- function(a, dim, f, dimname=NULL){
     spread_array(var, !!!syms(paste0("dim_", 1:ndim)))
 
   # Update Dimnames
-  if (!is.null(dn)){
-    if(dim(b)[dim] == d[dim] & is.null(dimname) & !is.null(dn[[dim]])) {
-      dimname <- dn[[dim]]
-      dn[[dim]] <- dimname
+  if (!is.null(dn) || !is.null(dimname)){
+    if (!is.null(dn)){
+      dn[dimno] <- list(NULL)
+    } else {
+      dn <- list()
+      for (i in 1:length(d)) dn[[i]] <- NULL
+    }
+    if (!is.null(dimname)){
+      dn[[dimno]] <- dimname
     }
     dimnames(b) <- dn
   } else {
     names(dim(b)) <- NULL
   }
-
   return(b)
 }
 
@@ -118,7 +122,7 @@ glr_array <- function(x, V, parts, dimname = colnames(V)){
 
 #' @rdname array_lr_transforms
 #' @export
-glrInv_array <- function(y, V, coords, dimname = colnames(V)){
+glrInv_array <- function(y, V, coords, dimname = rownames(V)){
   f <- function(y) glrInv(y, V)
   array_apply_1D_function(y, coords, f, dimname)
 }
@@ -141,7 +145,7 @@ alrInv_array <- function(y, d=dim(y)[coords]+1, coords){
 #' @export
 ilr_array <- function(x, V=NULL, parts){
   n.parts <- dim(x)[parts]
-  if (is.null(V)) V <- qr.Q(qr(create_alr_base(n.parts, n.parts)))
+  if (is.null(V)) V <- create_default_ilr_base(n.parts)
   glr_array(x, V, parts)
 }
 

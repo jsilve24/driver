@@ -4,16 +4,16 @@
 \alias{array_apply_1D_function}
 \title{Apply Function to 1 dimension of array along all others}
 \usage{
-array_apply_1D_function(a, dim, f, dimname = NULL)
+array_apply_1D_function(a, dimno, f, dimname = NULL)
 }
 \arguments{
 \item{a}{input array}
 
-\item{dim}{dimension (as integer) along which to apply matrix operation}
-
 \item{f}{function to apply to matrix that returns a matrix}
 
 \item{dimname}{(optional) charachter vector for dimension output from matrix operation}
+
+\item{dim}{dimension (as integer) along which to apply matrix operation}
 }
 \value{
 array

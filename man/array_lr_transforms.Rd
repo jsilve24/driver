@@ -14,7 +14,7 @@
 \usage{
 glr_array(x, V, parts, dimname = colnames(V))
 
-glrInv_array(y, V, coords, dimname = colnames(V))
+glrInv_array(y, V, coords, dimname = rownames(V))
 
 alr_array(x, d = dim(x)[parts], parts)
 

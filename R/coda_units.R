@@ -7,7 +7,7 @@
 #'
 #' @details EI is defined on log-ratio scale and for a given balance can be
 #' derived as \deqn{y = sqrt(rs/(r+s))log(Gm(X^+)/Gm(X^-))}
-#' @return
+#' @return scalar
 #' @export
 #'
 #' @examples

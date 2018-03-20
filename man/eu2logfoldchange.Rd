@@ -13,6 +13,9 @@ eu2logfoldchange(x, r = 1, s = 1)
 
 \item{s}{number of parts in denominator of log-ratio}
 }
+\value{
+scalar
+}
 \description{
 Calculate Equilvalent Log Fold Change for Given Change in Evidence Information
 }

@@ -2,12 +2,15 @@
 % Please edit documentation in R/complex_coda.R
 \name{convert_coda_covariance}
 \alias{convert_coda_covariance}
+\alias{ilrvar2ilrvar}
 \alias{ilrvar2clrvar}
 \alias{clrvar2ilrvar}
 \alias{clrvar2varmat}
 \alias{ilrvar2varmat}
 \title{Convert CoDA covariance matricies between representations}
 \usage{
+ilrvar2ilrvar(Sigma, V1, V2)
+
 ilrvar2clrvar(Sigma, V)
 
 clrvar2ilrvar(Sigma, V)
@@ -19,13 +22,17 @@ ilrvar2varmat(Sigma, V)
 \arguments{
 \item{Sigma}{covariance matrix in specified transformed space}
 
+\item{V1}{ILR contrast matrix of basis Sigma is already in}
+
+\item{V2}{ILR contrast matrix of basis Sigma is desired in}
+
 \item{V}{ILR contrast matrix (i.e., transformation matrix of ILR)}
 }
 \value{
 matrix
 }
 \description{
-\code{ilrvar}, \code{clrvar}, and \code{varmat} (variationi matrix).
+\code{ilrvar}, \code{clrvar}, and \code{varmat} (variation matrix).
 }
 \examples{
 x <- matrix(runif(30),  10, 3)

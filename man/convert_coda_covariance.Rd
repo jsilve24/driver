@@ -2,6 +2,7 @@
 % Please edit documentation in R/complex_coda.R
 \name{convert_coda_covariance}
 \alias{convert_coda_covariance}
+\alias{ilrvar2phi}
 \alias{ilrvar2ilrvar}
 \alias{ilrvar2clrvar}
 \alias{clrvar2ilrvar}
@@ -9,6 +10,8 @@
 \alias{ilrvar2varmat}
 \title{Convert CoDA covariance matricies between representations}
 \usage{
+ilrvar2phi(Sigma, V)
+
 ilrvar2ilrvar(Sigma, V1, V2)
 
 ilrvar2clrvar(Sigma, V)
@@ -22,17 +25,19 @@ ilrvar2varmat(Sigma, V)
 \arguments{
 \item{Sigma}{covariance matrix in specified transformed space}
 
+\item{V}{ILR contrast matrix (i.e., transformation matrix of ILR)}
+
 \item{V1}{ILR contrast matrix of basis Sigma is already in}
 
 \item{V2}{ILR contrast matrix of basis Sigma is desired in}
-
-\item{V}{ILR contrast matrix (i.e., transformation matrix of ILR)}
 }
 \value{
 matrix
 }
 \description{
 \code{ilrvar}, \code{clrvar}, and \code{varmat} (variation matrix).
+\code{ilrvar2phi} calculates phi statistics (for proportionality)
+from an ILR covariance matrix as described in Lovell (2015).
 }
 \examples{
 x <- matrix(runif(30),  10, 3)
@@ -44,4 +49,5 @@ Sigma.clr <- ilrvar2clrvar(Sigma, V)
 clrvar2ilrvar(Sigma.clr, V)
 clrvar2varmat(Sigma.clr)
 ilrvar2varmat(Sigma, V)
+ilrvar2phi(Sigma,V)
 }

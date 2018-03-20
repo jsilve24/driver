@@ -1,9 +1,11 @@
 #' Convert CoDA covariance matricies between representations
 #'
-#' \code{ilrvar}, \code{clrvar}, and \code{varmat} (variationi matrix).
+#' \code{ilrvar}, \code{clrvar}, and \code{varmat} (variation matrix).
 #'
 #' @param Sigma covariance matrix in specified transformed space
 #' @param V ILR contrast matrix (i.e., transformation matrix of ILR)
+#' @param V1 ILR contrast matrix of basis Sigma is already in
+#' @param V2 ILR contrast matrix of basis Sigma is desired in
 #'
 #' @return matrix
 #' @name convert_coda_covariance
@@ -18,6 +20,14 @@
 #' clrvar2varmat(Sigma.clr)
 #' ilrvar2varmat(Sigma, V)
 NULL
+
+
+#' @rdname convert_coda_covariance
+#' @export
+ilrvar2ilrvar <- function(Sigma, V1, V2){
+   t(V2) %*% V1 %*% Sigma %*% t(V1) %*% V2
+}
+
 
 #' @rdname convert_coda_covariance
 #' @export

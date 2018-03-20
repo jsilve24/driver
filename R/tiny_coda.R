@@ -18,25 +18,6 @@ miniclo <- function(x){
   (x/rowSums(x))
 }
 
-#' Check if Vector and if so, Convert to Row Matrix
-#'
-#' @param x vector or matrix
-#'
-#' @return matrix
-#' @export
-#'
-#' @examples
-#' vec_to_mat(c(1,2,3))
-#' vec_to_mat(rbind(c(1,2,3), c(1,2,3)))
-vec_to_mat <- function(x){
-  if (is.vector(x)) {
-    n <- names(x)
-    x <- matrix(x, nrow = 1)
-    colnames(x) <- n
-  }
-  x
-}
-
 
 # BASE CODA ---------------------------------------------------------------
 

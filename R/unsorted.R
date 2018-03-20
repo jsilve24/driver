@@ -41,3 +41,42 @@ bdiag <- function (...) {
   out[iuse] <- unlist(x)
   return(out)
 }
+
+
+#' Check if Vector and if so, Convert to Row Matrix
+#'
+#' @param x vector or matrix
+#'
+#' @return matrix
+#' @export
+#'
+#' @examples
+#' vec_to_mat(c(1,2,3))
+#' vec_to_mat(rbind(c(1,2,3), c(1,2,3)))
+vec_to_mat <- function(x){
+  if (is.vector(x)) {
+    n <- names(x)
+    x <- matrix(x, nrow = 1)
+    colnames(x) <- n
+  }
+  x
+}
+
+
+#' Center matrix (subtract row mean from each row)
+#'
+#' After centering, rowsums sum to zero. Particularly useful when working
+#' with categorical data in log-space.
+#'
+#' @param x vector or matrix
+#'
+#' @return matrix with centered rows
+#' @export
+#'
+#' @examples
+#' x <- matrix(rnorm(100), 10, 10)
+#' y <- center(x)
+#' rowSums(y)
+center <- function(x){
+  sweep(vec_to_mat(x), 1, rowMeans(x), FUN=`-`)
+}

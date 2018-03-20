@@ -80,3 +80,18 @@ vec_to_mat <- function(x){
 center <- function(x){
   sweep(vec_to_mat(x), 1, rowMeans(x), FUN=`-`)
 }
+
+
+#' One Hot Encoding of vector
+#'
+#' @param x vector with D possible categorical values (will be coerced to factor)
+#'
+#' @return matrix with D columns and same number of columns as length of x
+#' @export
+#'
+#' @examples
+#' onehot(1:5)
+onehot <- function(x){
+  model.matrix(~as.factor(x)-1)
+}
+

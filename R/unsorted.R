@@ -95,3 +95,32 @@ onehot <- function(x){
   model.matrix(~as.factor(x)-1)
 }
 
+
+#' Logit Transformation of Vector
+#'
+#' @param x vector
+#'
+#' @return vector
+#' @export
+#'
+#' @examples
+#' Logit(c(.2, .4, 1, 0))
+#'
+Logit <- function(x) {
+  log(x/(1-x))
+}
+
+#' Inverse Logit Transformation of Vector
+#'
+#' @param x vector
+#'
+#' @return vector
+#' @export
+#'
+#' @examples
+#' invLogit(c(.2, .4, 1, 0))
+invLogit <- function(x) {
+  1/(1+exp(-x))
+}
+
+

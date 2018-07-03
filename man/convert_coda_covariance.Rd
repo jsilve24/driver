@@ -8,6 +8,12 @@
 \alias{clrvar2ilrvar}
 \alias{clrvar2varmat}
 \alias{ilrvar2varmat}
+\alias{alrvar2clrvar}
+\alias{clrvar2alrvar}
+\alias{alrvar2alrvar}
+\alias{alrvar2ilrvar}
+\alias{ilrvar2alrvar}
+\alias{alrvar2varmat}
 \title{Convert CoDA covariance matricies between representations}
 \usage{
 ilrvar2phi(Sigma, V)
@@ -21,6 +27,18 @@ clrvar2ilrvar(Sigma, V)
 clrvar2varmat(Sigma)
 
 ilrvar2varmat(Sigma, V)
+
+alrvar2clrvar(Sigma, d1)
+
+clrvar2alrvar(Sigma, d2)
+
+alrvar2alrvar(Sigma, d1, d2)
+
+alrvar2ilrvar(Sigma, d1, V2)
+
+ilrvar2alrvar(Sigma, V1, d2)
+
+alrvar2varmat(Sigma, d1)
 }
 \arguments{
 \item{Sigma}{covariance matrix in specified transformed space}
@@ -30,6 +48,10 @@ ilrvar2varmat(Sigma, V)
 \item{V1}{ILR contrast matrix of basis Sigma is already in}
 
 \item{V2}{ILR contrast matrix of basis Sigma is desired in}
+
+\item{d1}{alr reference element Sigma is already expressed with respec to}
+
+\item{d2}{alr reference element Sigma is to be expressed with respect to}
 }
 \value{
 matrix

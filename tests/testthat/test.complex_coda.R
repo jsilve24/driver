@@ -12,4 +12,6 @@ test_that("exchangability of representations", {
 
   expect_equal(Sigma, clrvar2ilrvar(Sigma.clr, V))
   expect_equal(clrvar2varmat(Sigma.clr), ilrvar2varmat(Sigma, V))
+  expect_equal(Sigma.clr, alrvar2clrvar(clrvar2alrvar(Sigma.clr, 3), 3))
+  expect_equal(ilrvar2alrvar(Sigma, V, 3), clrvar2alrvar(Sigma.clr, 3))
 })

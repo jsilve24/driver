@@ -210,3 +210,4 @@ test_that("ilr_array handles names correctly", {
   expect_equal(dimnames(ilrInv_array(a1_ilr, V, 1))[[2]], c("a", "b", "c"))
 
 })
+

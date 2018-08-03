@@ -105,6 +105,8 @@ miniclo_array <- function(x, parts){
 #' @return array
 #' @name array_lr_transforms
 #'
+#' @details accelerated for parts OR coords == 1
+#'
 #' @examples
 #' a <- array(1:100, dim=c(10, 5, 2))
 #' a <- miniclo_array(a, parts=2)
@@ -115,8 +117,22 @@ NULL
 #' @rdname array_lr_transforms
 #' @export
 glr_array <- function(x, V, parts, dimname = colnames(V)){
-  f <- function(x) glr(x, V)
-  array_apply_1D_function(x, parts, f, dimname)
+  if (parts == 1){
+    dn <- dimnames(x)
+    d <- dim(x)
+    x <- matrix(x, d[1], prod(d[-1]))
+    x <- t(V) %*% log(x)
+    d[1] <- ncol(V)
+    dim(x) <- d
+    if (!is.null(dn)){
+      dn[[1]] <- dimname
+      dimnames(x) <- dn
+    }
+    return(x)
+  } else {
+    f <- function(x) glr(x, V)
+    return(array_apply_1D_function(x, parts, f, dimname))
+  }
 }
 
 #' @rdname array_lr_transforms

@@ -1,4 +1,3 @@
-
 # Main Helper Function ----------------------------------------------------
 
 #' Apply Function to 1 dimension of array along all others

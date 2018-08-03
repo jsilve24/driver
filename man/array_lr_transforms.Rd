@@ -52,6 +52,9 @@ array
 Extension of \code{\link{base_lr_transforms}} to arrays over arbitrary
 margins.
 }
+\details{
+accelerated for parts OR coords == 1
+}
 \examples{
 a <- array(1:100, dim=c(10, 5, 2))
 a <- miniclo_array(a, parts=2)

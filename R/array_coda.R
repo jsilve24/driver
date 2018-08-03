@@ -138,8 +138,23 @@ glr_array <- function(x, V, parts, dimname = colnames(V)){
 #' @rdname array_lr_transforms
 #' @export
 glrInv_array <- function(y, V, coords, dimname = rownames(V)){
-  f <- function(y) glrInv(y, V)
-  array_apply_1D_function(y, coords, f, dimname)
+  if (coords==1){
+    dn <- dimnames(y)
+    d <- dim(y)
+    y <- matrix(y, d[1], prod(d[-1]))
+    y <- exp(V %*% y)
+    y <- t(miniclo(t(y)))
+    d[1] <- nrow(V)
+    dim(y) <- d
+    if (!is.null(dn)){
+      dn[[1]] <- dimname
+      dimnames(y) <- dn
+    }
+    return(y)
+  } else {
+    f <- function(y) glrInv(y, V)
+    return(array_apply_1D_function(y, coords, f, dimname))
+  }
 }
 
 #' @rdname array_lr_transforms

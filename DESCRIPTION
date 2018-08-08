@@ -1,7 +1,7 @@
 Package: driver
 Type: Package
 Title: Utility Functions from Justin Silverman
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(person("Justin", "Silverman", role=c("aut", "cre"),
                      email = "jsilve24@gmail.com"))
 Author: Justin Silverman

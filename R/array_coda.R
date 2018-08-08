@@ -147,7 +147,7 @@ glrInv_array <- function(y, V, coords, dimname = rownames(V)){
     d[1] <- nrow(V)
     dim(y) <- d
     if (!is.null(dn)){
-      dn[[1]] <- dimname
+      if (!is.null(dimname)) { dn[[1]] <- dimname } else {dn[1] <- list(NULL)}
       dimnames(y) <- dn
     }
     return(y)

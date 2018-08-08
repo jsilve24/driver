@@ -211,3 +211,14 @@ test_that("ilr_array handles names correctly", {
 
 })
 
+
+test_that("array coda transforms handle bnamed input correctly", {
+  a1 <- a
+  s <-  paste0("s", 1:ncol(a1))
+  x <- paste0("x", 1:nrow(a1))
+  colnames(a1) <- s
+  rownames(a1) <- x
+  out <- list(x, NULL, NULL)
+  foo <- alrInv_array(a1, coords=2)
+  expect_equal(dimnames(foo), out)
+})

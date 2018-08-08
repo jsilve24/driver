@@ -18,7 +18,7 @@ List of array of 1 less dimension than a
 Split Multidimeninal array to a list along a specified dimension
 }
 \examples{
-a <- array(0, dim=4:6)
+a <- array(1:prod(4:6), dim=4:6)
 split_along_dim(a, 3)
 }
 \references{

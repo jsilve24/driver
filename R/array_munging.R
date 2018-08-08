@@ -152,7 +152,7 @@ all_cases_array <- function(a, margin=1){
 #' @export
 #' @references https://stackoverflow.com/questions/20198751/three-dimensional-array-to-list
 #' @examples
-#' a <- array(0, dim=4:6)
+#' a <- array(1:prod(4:6), dim=4:6)
 #' split_along_dim(a, 3)
 split_along_dim <- function(a, n){
   setNames(lapply(split(a, arrayInd(seq_along(a), dim(a))[, n]),

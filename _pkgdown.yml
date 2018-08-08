@@ -1,0 +1,44 @@
+reference:
+- title: "Basic Compositional Data Analysis Functions"
+  desc: "Functions for Basic CoDA manipulation of matricies."
+  contents:
+  - '`miniclo`'
+  - '`base_lr_transforms`'
+  - '`convert_coda_covariance`'
+  - '`eu2logfoldchange`'
+- title: "Array Compositional Data Analysis Functions"
+  desc: "Functions for manipulating Arrays using CoDA Transforms"
+  contents:
+  - '`miniclo_array`'
+  - '`array_lr_transforms`'
+
+- title: "Tidy Handling of Arrays"
+  desc: "Functions for converting arrays between tidy and wide formats"
+  contents:
+  - '`gather_array`'
+  - '`spread_array`'
+
+- title: "Quick Transforms and Functions for Preparing data for modeling"
+  desc: >
+  contents:
+  - '`Logit`'
+  - '`invLogit`'
+  - '`center`'
+  - '`onehot`'
+
+- title: "Tidy Bayesian Functions"
+  desc: >
+  contents:
+  - '`summarise_posterior`'
+
+- title: "Other Assorted Functions"
+  desc: >
+  contents:
+  - '`add_array_dim`'
+  - '`split_along_dim`'
+  - '`bdiag`'
+  - '`any_cases_array`'
+  - '`dmode`'
+  - '`lower_triangle_factors`'
+  - '`vec_to_mat`'
+  - '`array_apply_1D_function`'

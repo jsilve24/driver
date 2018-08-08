@@ -76,12 +76,7 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://github.com/jsilve24/driver">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -108,7 +103,79 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-basic-compositional-data-analysis-functions" class="hasAnchor"><a href="#section-basic-compositional-data-analysis-functions" class="anchor"></a>Basic Compositional Data Analysis Functions</h2>
+          <p class="section-desc"><p>Functions for Basic CoDA manipulation of matricies.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="miniclo.html">miniclo()</a></code> </p>
+        </td>
+        <td><p>Closure operator</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="base_lr_transforms.html">glr()</a></code> <code><a href="base_lr_transforms.html">glrInv()</a></code> <code><a href="base_lr_transforms.html">create_alr_base()</a></code> <code><a href="base_lr_transforms.html">alr()</a></code> <code><a href="base_lr_transforms.html">alrInv()</a></code> <code><a href="base_lr_transforms.html">create_default_ilr_base()</a></code> <code><a href="base_lr_transforms.html">ilr()</a></code> <code><a href="base_lr_transforms.html">ilrInv()</a></code> <code><a href="base_lr_transforms.html">create_clr_base()</a></code> <code><a href="base_lr_transforms.html">clr()</a></code> <code><a href="base_lr_transforms.html">clrInv()</a></code> </p>
+        </td>
+        <td><p>Log-Ratio Transformation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convert_coda_covariance.html">ilrvar2phi()</a></code> <code><a href="convert_coda_covariance.html">ilrvar2ilrvar()</a></code> <code><a href="convert_coda_covariance.html">ilrvar2clrvar()</a></code> <code><a href="convert_coda_covariance.html">clrvar2ilrvar()</a></code> <code><a href="convert_coda_covariance.html">clrvar2varmat()</a></code> <code><a href="convert_coda_covariance.html">ilrvar2varmat()</a></code> <code><a href="convert_coda_covariance.html">alrvar2clrvar()</a></code> <code><a href="convert_coda_covariance.html">clrvar2alrvar()</a></code> <code><a href="convert_coda_covariance.html">alrvar2alrvar()</a></code> <code><a href="convert_coda_covariance.html">alrvar2ilrvar()</a></code> <code><a href="convert_coda_covariance.html">ilrvar2alrvar()</a></code> <code><a href="convert_coda_covariance.html">alrvar2varmat()</a></code> </p>
+        </td>
+        <td><p>Convert CoDA covariance matricies between representations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="eu2logfoldchange.html">eu2logfoldchange()</a></code> </p>
+        </td>
+        <td><p>Calculate Equilvalent Log Fold Change for Given Change in Evidence Information</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-array-compositional-data-analysis-functions" class="hasAnchor"><a href="#section-array-compositional-data-analysis-functions" class="anchor"></a>Array Compositional Data Analysis Functions</h2>
+          <p class="section-desc"><p>Functions for manipulating Arrays using CoDA Transforms</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="miniclo_array.html">miniclo_array()</a></code> </p>
+        </td>
+        <td><p>Closure Operation applied to array on margin</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="array_lr_transforms.html">glr_array()</a></code> <code><a href="array_lr_transforms.html">glrInv_array()</a></code> <code><a href="array_lr_transforms.html">alr_array()</a></code> <code><a href="array_lr_transforms.html">alrInv_array()</a></code> <code><a href="array_lr_transforms.html">ilr_array()</a></code> <code><a href="array_lr_transforms.html">ilrInv_array()</a></code> <code><a href="array_lr_transforms.html">clr_array()</a></code> <code><a href="array_lr_transforms.html">clrInv_array()</a></code> </p>
+        </td>
+        <td><p>Log-Ratios Transforms for Arrays</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-tidy-handling-of-arrays" class="hasAnchor"><a href="#section-tidy-handling-of-arrays" class="anchor"></a>Tidy Handling of Arrays</h2>
+          <p class="section-desc"><p>Functions for converting arrays between tidy and wide formats</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="gather_array.html">gather_array()</a></code> </p>
+        </td>
+        <td><p>Gather Multidimensional Array to Tidy Tibble</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="spread_array.html">spread_array()</a></code> </p>
+        </td>
+        <td><p>Spread data.frame</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-quick-transforms-and-functions-for-preparing-data-for-modeling" class="hasAnchor"><a href="#section-quick-transforms-and-functions-for-preparing-data-for-modeling" class="anchor"></a>Quick Transforms and Functions for Preparing data for modeling</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -121,33 +188,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="add_array_dim.html">add_array_dim()</a></code> </p>
+          <p><code><a href="invLogit.html">invLogit()</a></code> </p>
         </td>
-        <td><p>Add 1 dimension to array</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="array_apply_1D_function.html">array_apply_1D_function()</a></code> </p>
-        </td>
-        <td><p>Apply Function to 1 dimension of array along all others</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="array_lr_transforms.html">glr_array()</a></code> <code><a href="array_lr_transforms.html">glrInv_array()</a></code> <code><a href="array_lr_transforms.html">alr_array()</a></code> <code><a href="array_lr_transforms.html">alrInv_array()</a></code> <code><a href="array_lr_transforms.html">ilr_array()</a></code> <code><a href="array_lr_transforms.html">ilrInv_array()</a></code> <code><a href="array_lr_transforms.html">clr_array()</a></code> <code><a href="array_lr_transforms.html">clrInv_array()</a></code> </p>
-        </td>
-        <td><p>Log-Ratios Transforms for Arrays</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="base_lr_transforms.html">glr()</a></code> <code><a href="base_lr_transforms.html">glrInv()</a></code> <code><a href="base_lr_transforms.html">create_alr_base()</a></code> <code><a href="base_lr_transforms.html">alr()</a></code> <code><a href="base_lr_transforms.html">alrInv()</a></code> <code><a href="base_lr_transforms.html">create_default_ilr_base()</a></code> <code><a href="base_lr_transforms.html">ilr()</a></code> <code><a href="base_lr_transforms.html">ilrInv()</a></code> <code><a href="base_lr_transforms.html">create_clr_base()</a></code> <code><a href="base_lr_transforms.html">clr()</a></code> <code><a href="base_lr_transforms.html">clrInv()</a></code> </p>
-        </td>
-        <td><p>Log-Ratio Transformation</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bdiag.html">bdiag()</a></code> </p>
-        </td>
-        <td><p>Create Block Diagonal Matrix from Passed Matricies</p></td>
+        <td><p>Inverse Logit Transformation of Vector</p></td>
       </tr><tr>
         
         <td>
@@ -157,63 +200,37 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="complete_cases_array.html">any_cases_array()</a></code> <code><a href="complete_cases_array.html">all_cases_array()</a></code> </p>
-        </td>
-        <td><p>Test for any/all non-NA along margin</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="convert_coda_covariance.html">ilrvar2phi()</a></code> <code><a href="convert_coda_covariance.html">ilrvar2ilrvar()</a></code> <code><a href="convert_coda_covariance.html">ilrvar2clrvar()</a></code> <code><a href="convert_coda_covariance.html">clrvar2ilrvar()</a></code> <code><a href="convert_coda_covariance.html">clrvar2varmat()</a></code> <code><a href="convert_coda_covariance.html">ilrvar2varmat()</a></code> <code><a href="convert_coda_covariance.html">alrvar2clrvar()</a></code> <code><a href="convert_coda_covariance.html">clrvar2alrvar()</a></code> <code><a href="convert_coda_covariance.html">alrvar2alrvar()</a></code> <code><a href="convert_coda_covariance.html">alrvar2ilrvar()</a></code> <code><a href="convert_coda_covariance.html">ilrvar2alrvar()</a></code> <code><a href="convert_coda_covariance.html">alrvar2varmat()</a></code> </p>
-        </td>
-        <td><p>Convert CoDA covariance matricies between representations</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dmode.html">dmode()</a></code> </p>
-        </td>
-        <td><p>Mode of a vector x</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="eu2logfoldchange.html">eu2logfoldchange()</a></code> </p>
-        </td>
-        <td><p>Calculate Equilvalent Log Fold Change for Given Change in Evidence Information</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gather_array.html">gather_array()</a></code> </p>
-        </td>
-        <td><p>Gather Multidimensional Array to Tidy Tibble</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="invLogit.html">invLogit()</a></code> </p>
-        </td>
-        <td><p>Inverse Logit Transformation of Vector</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lower_triangle_factors.html">lower_triangle_factors()</a></code> </p>
-        </td>
-        <td><p>Vector to lower diagonal of matrix formed from factor by factor</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="miniclo.html">miniclo()</a></code> </p>
-        </td>
-        <td><p>Closure operator</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="miniclo_array.html">miniclo_array()</a></code> </p>
-        </td>
-        <td><p>Closure Operation applied to array on margin</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="onehot.html">onehot()</a></code> </p>
         </td>
         <td><p>One Hot Encoding of vector</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-tidy-bayesian-functions" class="hasAnchor"><a href="#section-tidy-bayesian-functions" class="anchor"></a>Tidy Bayesian Functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="summarise_posterior.html">summarise_posterior()</a></code> </p>
+        </td>
+        <td><p>Shortcut for summarize variable with quantiles and mean</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-other-assorted-functions" class="hasAnchor"><a href="#section-other-assorted-functions" class="anchor"></a>Other Assorted Functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="add_array_dim.html">add_array_dim()</a></code> </p>
+        </td>
+        <td><p>Add 1 dimension to array</p></td>
       </tr><tr>
         
         <td>
@@ -223,21 +240,39 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="spread_array.html">spread_array()</a></code> </p>
+          <p><code><a href="bdiag.html">bdiag()</a></code> </p>
         </td>
-        <td><p>Spread data.frame</p></td>
+        <td><p>Create Block Diagonal Matrix from Passed Matricies</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="summarise_posterior.html">summarise_posterior()</a></code> </p>
+          <p><code><a href="complete_cases_array.html">any_cases_array()</a></code> <code><a href="complete_cases_array.html">all_cases_array()</a></code> </p>
         </td>
-        <td><p>Shortcut for summarize variable with quantiles and mean</p></td>
+        <td><p>Test for any/all non-NA along margin</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dmode.html">dmode()</a></code> </p>
+        </td>
+        <td><p>Mode of a vector x</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="lower_triangle_factors.html">lower_triangle_factors()</a></code> </p>
+        </td>
+        <td><p>Vector to lower diagonal of matrix formed from factor by factor</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="vec_to_mat.html">vec_to_mat()</a></code> </p>
         </td>
         <td><p>Check if Vector and if so, Convert to Row Matrix</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="array_apply_1D_function.html">array_apply_1D_function()</a></code> </p>
+        </td>
+        <td><p>Apply Function to 1 dimension of array along all others</p></td>
       </tr>
     </tbody>
     </table>
@@ -246,7 +281,12 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-basic-compositional-data-analysis-functions">Basic Compositional Data Analysis Functions</a></li>
+      <li><a href="#section-array-compositional-data-analysis-functions">Array Compositional Data Analysis Functions</a></li>
+      <li><a href="#section-tidy-handling-of-arrays">Tidy Handling of Arrays</a></li>
+      <li><a href="#section-quick-transforms-and-functions-for-preparing-data-for-modeling">Quick Transforms and Functions for Preparing data for modeling</a></li>
+      <li><a href="#section-tidy-bayesian-functions">Tidy Bayesian Functions</a></li>
+      <li><a href="#section-other-assorted-functions">Other Assorted Functions</a></li>
     </ul>
   </div>
 </div>

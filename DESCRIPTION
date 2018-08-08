@@ -6,7 +6,7 @@ Authors@R: c(person("Justin", "Silverman", role=c("aut", "cre"),
                      email = "jsilve24@gmail.com"))
 Author: Justin Silverman
 Maintainer: Justin Silverman <jsilve24@gmail.com>
-Description: Personal Utility Functions from Justin Silvemran. 
+Description: Personal Utility Functions from Justin Silverman. 
   Includes minimal implementation of log-ratio transforms, log-ratio 
   transforms implemented on multidimensional arrays, array munging functions
   for moving quickly back and forth between tidy and multidimensional array
@@ -17,6 +17,6 @@ LazyData: true
 Suggests: testthat, abind, philr, knitr
 Imports: dplyr, tidyr, purrr, rlang, plyr
 VignetteBuilder: knitr
-URL: https://github.com/jsilve24/driver 
+URL: https://jsilve24.github.io/driver/
 BugReports: https://github.com/jsilve24/driver/issues
 RoxygenNote: 6.1.0

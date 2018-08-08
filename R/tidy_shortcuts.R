@@ -6,13 +6,18 @@
 #'
 #' @return data.frame
 #' @export
+#' @details Notation: \code{pX} refers to the \code{X}\% quantile
 #' @import dplyr
 #' @importFrom stats quantile
 #' @importFrom rlang quos quo UQ
 #' @examples
-#' # library(dplyr)
-#' # d <- data.frame("a" = c(1:10), "b"=rep(c(1,2), 5)) %>%
-#' #   summarise_posterior(a, mean.b = mean(b))
+#' d <- data.frame("a"=sample(1:10, 50, TRUE),
+#'                 "b"=rnorm(50))
+#'
+#' # Summarize posterior for b over grouping of a and also calcuate
+#' # minmum of b (in addition to normal statistics returned)
+#' d <- dplyr::group_by(d, a)
+#' summarise_posterior(d, b, mean.b = mean(b), min=min(b))
 summarise_posterior <- function(data, var, ...){
   qvar <- enquo(var)
   qs <- quos(...)

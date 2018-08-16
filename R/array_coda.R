@@ -125,8 +125,12 @@ glr_array <- function(x, V, parts, dimname = colnames(V)){
     d[1] <- ncol(V)
     dim(x) <- d
     if (!is.null(dn)){
-      dn[[1]] <- dimname
-      dimnames(x) <- dn
+      if (!is.null(dimname)){
+        dn[[1]] <- dimname
+      } else {
+        dn[1] <- list(NULL)
+      }
+        dimnames(x) <- dn
     }
     return(x)
   } else {

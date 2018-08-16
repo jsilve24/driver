@@ -212,7 +212,7 @@ test_that("ilr_array handles names correctly", {
 })
 
 
-test_that("array coda transforms handle bnamed input correctly", {
+test_that("array coda transforms handle named input correctly", {
   a1 <- a
   s <-  paste0("s", 1:ncol(a1))
   x <- paste0("x", 1:nrow(a1))

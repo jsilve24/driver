@@ -103,13 +103,17 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>rUnifSphere</span>(<span class='no'>D</span>, <span class='no'>radius</span>, <span class='kw'>n_samples</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>shell_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>rUnifSphere</span>(<span class='no'>n</span>, <span class='no'>D</span>, <span class='kw'>radius</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>shell_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>rUnifSimplex</span>(<span class='no'>D</span>, <span class='kw'>n_samples</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+<span class='fu'>rUnifSimplex</span>(<span class='no'>n</span>, <span class='no'>D</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>n</th>
+      <td><p>number of samples to produce</p></td>
+    </tr>
     <tr>
       <th>D</th>
       <td><p>dimension of object</p></td>
@@ -117,10 +121,6 @@
     <tr>
       <th>radius</th>
       <td><p>radius of sphere to sample from</p></td>
-    </tr>
-    <tr>
-      <th>n_samples</th>
-      <td><p>number of samples to produce</p></td>
     </tr>
     <tr>
       <th>shell_only</th>
@@ -131,9 +131,19 @@ samples from entire region of object</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>matrix of dimension D x n_samples</p>
+    <p>matrix of dimension D x n</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Sample Uniformily from Sphere (Full)</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>rUnifSphere</span>(<span class='fl'>1000</span>, <span class='fl'>2</span>, <span class='fl'>2</span>)
+<span class='fu'>plot</span>(<span class='fu'>t</span>(<span class='no'>x</span>), <span class='kw'>asp</span><span class='kw'>=</span><span class='fl'>1</span>)</div><div class='img'><img src='sample_uniform-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Sample Uniformily from Sphere (Shell Only)</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>rUnifSphere</span>(<span class='fl'>1000</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='kw'>shell_only</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
+<span class='fu'>plot</span>(<span class='fu'>t</span>(<span class='no'>x</span>), <span class='kw'>asp</span><span class='kw'>=</span><span class='fl'>1</span>)</div><div class='img'><img src='sample_uniform-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Sample Uniformily from Simplex</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>rUnifSimplex</span>(<span class='fl'>1000</span>, <span class='fl'>2</span>)
+<span class='fu'>plot</span>(<span class='fu'>t</span>(<span class='no'>x</span>), <span class='kw'>asp</span><span class='kw'>=</span><span class='fl'>1</span>)</div><div class='img'><img src='sample_uniform-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -141,7 +151,9 @@ samples from entire region of object</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

@@ -6,23 +6,36 @@
 \alias{rUnifSimplex}
 \title{Sample Uniformily from various objects centered at the origin}
 \usage{
-rUnifSphere(D, radius, n_samples = 1, shell_only = FALSE)
+rUnifSphere(n, D, radius = 1, shell_only = FALSE)
 
-rUnifSimplex(D, n_samples = 1)
+rUnifSimplex(n, D)
 }
 \arguments{
+\item{n}{number of samples to produce}
+
 \item{D}{dimension of object}
 
 \item{radius}{radius of sphere to sample from}
-
-\item{n_samples}{number of samples to produce}
 
 \item{shell_only}{if TRUE samples from shell of object only, if false
 samples from entire region of object}
 }
 \value{
-matrix of dimension D x n_samples
+matrix of dimension D x n
 }
 \description{
 Sample Uniformily from various objects centered at the origin
+}
+\examples{
+# Sample Uniformily from Sphere (Full)
+x <- rUnifSphere(1000, 2, 2)
+plot(t(x), asp=1)
+
+# Sample Uniformily from Sphere (Shell Only)
+x <- rUnifSphere(1000, 2, 2, shell_only=TRUE)
+plot(t(x), asp=1)
+
+# Sample Uniformily from Simplex
+x <- rUnifSimplex(1000, 2)
+plot(t(x), asp=1)
 }

@@ -139,18 +139,18 @@
 <span class='co'># minmum of b (in addition to normal statistics returned)</span>
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>d</span>, <span class='no'>a</span>)
 <span class='fu'>summarise_posterior</span>(<span class='no'>d</span>, <span class='no'>b</span>, <span class='kw'>mean.b</span> <span class='kw'>=</span> <span class='fu'>mean</span>(<span class='no'>b</span>), <span class='kw'>min</span><span class='kw'>=</span><span class='fu'>min</span>(<span class='no'>b</span>))</div><div class='output co'>#&gt; # A tibble: 10 x 9
-#&gt;        a   p2.5     p25     p50    mean    p75 p97.5  mean.b    min
-#&gt;    &lt;int&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
-#&gt;  1     1 -1.19  -0.616  -0.230  -0.202   0.317 0.716 -0.202  -1.26 
-#&gt;  2     2 -0.704 -0.659  -0.265  -0.104   0.333 0.874 -0.104  -0.712
-#&gt;  3     3 -1.12  -0.336  -0.198  -0.269  -0.157 0.479 -0.269  -1.20 
-#&gt;  4     4 -0.407  0.351   0.533   0.479   0.631 1.28   0.479  -0.506
-#&gt;  5     5 -0.238 -0.0224  0.0610  0.137   0.220 0.640  0.137  -0.262
-#&gt;  6     6 -1.21  -0.0946  1.14    0.433   1.32  1.47   0.433  -1.33 
-#&gt;  7     7 -0.871 -0.659  -0.423  -0.190   0.162 0.688 -0.190  -0.895
-#&gt;  8     8 -1.96  -0.909   0.221   0.0580  0.503 2.39   0.0580 -2.06 
-#&gt;  9     9 -2.60  -0.929   0.652  -0.0328  0.944 1.76  -0.0328 -2.81 
-#&gt; 10    10 -1.02  -0.444   0.198   0.0462  0.612 0.984  0.0462 -1.09 </div></pre>
+#&gt;        a   p2.5    p25     p50     mean      p75  p97.5   mean.b    min
+#&gt;    &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+#&gt;  1     1 -0.706 -0.547 -0.370  -0.244   -0.00479  0.324 -0.244   -0.723
+#&gt;  2     2 -0.366 -0.253  0.168   0.252    0.673    1.01   0.252   -0.379
+#&gt;  3     3 -1.43  -0.903 -0.314  -0.562   -0.0961   0.100 -0.562   -1.49 
+#&gt;  4     4 -0.375 -0.247  0.0286  0.00631  0.252    0.367  0.00631 -0.390
+#&gt;  5     5 -0.697 -0.113  0.509   0.375    0.612    1.68   0.375   -0.739
+#&gt;  6     6 -0.921 -0.439 -0.0193  0.100    0.629    1.12   0.100   -1.02 
+#&gt;  7     7 -1.54  -1.44  -1.33   -1.33    -1.22    -1.12  -1.33    -1.55 
+#&gt;  8     8 -0.674 -0.633 -0.315  -0.161   -0.00122  0.740 -0.161   -0.679
+#&gt;  9     9 -1.22  -1.01  -0.786  -0.786   -0.557   -0.351 -0.786   -1.24 
+#&gt; 10    10 -0.941 -0.716 -0.141  -0.0437   0.271    1.30  -0.0437  -0.983</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -15,7 +15,7 @@
 #' @return array
 #' @export
 #'
-#' @importFrom rlang sym syms new_definition
+#' @importFrom rlang sym syms
 #'
 #' @examples
 #' a <- array(runif(600), dim = c(100, 3, 2))
@@ -47,7 +47,6 @@ array_apply_1D_function <- function(a, dimno, f, dimname=NULL){
     bind_cols(indicies, .) %>%
     gather(!!sdim, var, -contains("dim")) %>%
     mutate(!!quo_name(sdim)  := as.integer(!!sdim)) %>%
-    #mutate(new_definition(quo_name(sdim), as.integer(!!sdim))) %>%
     spread_array(var, !!!syms(paste0("dim_", 1:ndim)))
 
   # Update Dimnames
